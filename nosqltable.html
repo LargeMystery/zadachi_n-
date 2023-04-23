@@ -1,0 +1,97 @@
+<!Doctype html>
+<html>
+
+   <head>
+     <meta charset="UTF-8">
+     <title>nosql table</title>
+   </head>
+
+<body>
+
+  <style type="text/css">
+    .button {
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+    }
+    .input{
+      width: 400px;
+    }
+  </style>
+
+        <h1>NoSQL Table</h1>
+
+        <input class="input" type="text" placeholder="Name" id="namebox"></input> <br><br>
+        <input class="input" type="number" placeholder="Age" id="agebox"></input> <br><br>
+        <input class="input" type="number" placeholder="Favourite number" id="favnumbox"></input> <br><br>
+        <input class="input" type="text" placeholder="Favourite item" id="favitembox"></input> <br><br> <br><br>
+
+        <button class="button" id="insert" >Insert</button>
+        <button class="button" id="read">Read</button>
+        <button class="button" id="update">Update</button>
+        <button class="button" id="delete">Delete</button>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+
+  <script type="module">
+
+      // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9J46Acz7IpqO6NAB_350aYe0OxOobBBw",
+    authDomain: "test-f2011.firebaseapp.com",
+    databaseURL: "https://test-f2011-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "test-f2011",
+    storageBucket: "test-f2011.appspot.com",
+    messagingSenderId: "727839521793",
+    appId: "1:727839521793:web:46dc704630bec6dec6d400"
+  };
+
+  
+
+  // Initialize Firebase
+  
+  
+  import { getDatabase, ref, set, onValue, update, remove } 
+  from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+
+    var namefield = document.getElementById("namebox").value;
+    var agefield = document.getElementById("agebox").value;
+    var fnumfield = document.getElementById("favnumbox").value;
+    var fitemfield = document.getElementById("favitembox").value;
+
+    var insBtn = document.getElementById("insert");
+    var readBtn = document.getElementById("read");
+    var updBtn = document.getElementById("update");
+    var delBtn = document.getElementById("delete");
+
+    function Sumbitasd(){
+      const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+      firebase.database().ref("/").child(namefield).update({
+        name: namefield,
+        age: agefield,
+        favnum: fnumfield,
+        favitem: fitemfield
+      })
+    }
+
+    document.getElementById("insert").onclick = Sumbitasd;
+
+
+  </script>
+
+
+
+
+
+</body>
+
+</html>
